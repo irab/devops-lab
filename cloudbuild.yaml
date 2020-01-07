@@ -1,7 +1,19 @@
 steps:
-- name: golang
+- id: go_build
+  name: golang
   args: ['go', 'build', '-ldflags=-s -w', '.']
-artifacts:
-  objects:
-    location: 'gs://anz-test/'
-    paths: ['anz-test']
+- id: go_linter
+  name: "golangci/golangci-lint"
+  args: ["golangci-lint","run"]
+- id: go_security
+  name: "securego/gosec"
+  args: ["anz-test"]
+  env: ["GOPATH=."]
+- id: docker_image_build
+  name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '--tag=gcr.io/$PROJECT_ID/anz-test', '.']
+images: ['gcr.io/$PROJECT_ID/testapp']
+# artifacts:
+#   objects:
+#     location: 'gs://anz-test/'
+#     paths: ['anz-test']
