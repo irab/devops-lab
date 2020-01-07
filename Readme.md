@@ -12,4 +12,5 @@ Added go build compiler flags -s and -w to reduce binary size by remove symbol t
 
 References:
  - https://www.ianlewis.org/en/building-go-applications-google-container-builder
+ - https://hub.docker.com/_/scratch
  - 

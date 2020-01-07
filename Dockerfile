@@ -1,3 +1,3 @@
 FROM scratch
-COPY anz-test /anz-test
+COPY anz-test /
 CMD [ "/anz-test" ]

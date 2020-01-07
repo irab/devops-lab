@@ -30,7 +30,6 @@ func Version(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 
 	p := Data{App: *myapp}
 	json.NewEncoder(w).Encode(p)
-
 }
 
 func main() {
