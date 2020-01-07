@@ -7,9 +7,9 @@ steps:
   name: golang
   args: ['go', 'test']
 - id: go_security
-  name: "securego/gosec"
-  args: ["/"]
-  env: ["GOPATH=."]
+  name: securego/gosec
+  args: [/]
+  env: [GOPATH=.]
 - id: docker_image_build
   name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/$PROJECT_ID/anz-test', '.']
