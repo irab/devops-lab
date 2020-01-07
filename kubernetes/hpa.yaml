@@ -1,0 +1,19 @@
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: anz-test-hpa
+  namespace: anz
+  labels:
+    app: anz-test
+spec:
+  scaleTargetRef:
+    kind: Deployment
+    name: anz-test
+    apiVersion: apps/v1
+  minReplicas: 1
+  maxReplicas: 5
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      targetAverageUtilization: 80

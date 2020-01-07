@@ -1,0 +1,34 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: anz-test
+  namespace: anz
+  labels:
+    app: anz-test
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: anz-test
+  template:
+    metadata:
+      labels:
+        app: anz-test
+    spec:
+      containers:
+      - name: anz-test
+        image: gcr.io/ira-nz/anz-test:latest
+        ports:
+        - containerPort: 8080
+        env:
+          - name: "VERSION"
+            valueFrom:
+              configMapKeyRef:
+                key: "VERSION"
+                name: "anz-test-config"
+          - name: "LASTCOMMITSHA"
+            valueFrom:
+              configMapKeyRef:
+                key: "LASTCOMMITSHA"
+                name: "anz-test-config"
