@@ -18,6 +18,9 @@ steps:
     '--region', 'us-central1',
     '--platform', 'managed',
     '--allow-unauthenticated',
-    '--set-env-vars=', '$$'LASTCOMMITSHA=$COMMIT_SHA', 'VERSION=$TAG_NAME'
+    '--set-env-vars=', '$LASTCOMMITSHA', '$VERSION'
     ]
 images: ['gcr.io/$PROJECT_ID/anz-test']
+substitutions:
+  _LASTCOMMITSHA: $$' $COMMIT_SHA
+  _VERSION: =$TAG_NAME $$ '
