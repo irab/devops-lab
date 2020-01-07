@@ -11,3 +11,7 @@ steps:
   name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--tag=gcr.io/$PROJECT_ID/anz-test', '.']
 images: ['gcr.io/$PROJECT_ID/anz-test']
+artifacts:
+  objects:
+    location: 'gs://anz-test/'
+    paths: ['anz-test']
