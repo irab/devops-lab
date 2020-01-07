@@ -22,8 +22,6 @@ The cloudbuild.yaml file has the following steps:
 
 This pipeline has no different environments for managing changes safely. But this could easily be added by creating Cloud Run services and K8s deployments based on branch names or tag regex.
 
-There's some security scanning but 
-
 ## Local development
 
 ### Building
@@ -59,7 +57,15 @@ k6 run -u 1000 loadtests/k6-kubernetes.js
 k6 run -u 1000 loadtests/k6-cloudrun.js
 ```
 
-Performance seems 
+Performance seems to be much slower on Cloud Run than on Kubernetes:
+
+```bash
+k6 run -u 1000 loadtests/k6-cloudrun.js
+http_reqs..................: 10000  764.054335/s
+
+k6 run -u 1000 loadtests/k6-kubernetes.js
+http_reqs..................: 10000  2154.421445/s
+```
 
 ### Troubleshooting
 
