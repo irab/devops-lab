@@ -7,4 +7,4 @@ gcloud components install kubectl --quiet
 gcloud container clusters get-credentials standard-cluster-1 --zone us-central1-a
 
 ## apply kubernetes manifests
-kubectl apply -f kubernetes 
+kubectl apply -f kubernetes

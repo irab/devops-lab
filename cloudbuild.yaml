@@ -31,3 +31,5 @@ steps:
     '--location=us-central1-a',
     '--cluster=standard-cluster-1'
   ]
+images:
+- 'gcr.io/$PROJECT_ID/anz-test'

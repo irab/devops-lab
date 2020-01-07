@@ -22,8 +22,7 @@ The cloudbuild.yaml file has the following steps:
 
 This pipeline has no different environments for managing changes safely. But this could easily be added by creating Cloud Run services and K8s deployments based on branch names or tag regex.
 
-
-
+There's some security scanning but 
 
 ## Local development
 
@@ -48,6 +47,19 @@ git tag 0.0.2 && git push --tags
 ### Updating Dependencies with Go Modules
 
 The go.mod will automatically updated when a new version of external dependencies are updated after a new build. Make sure it these changes are committed.
+
+### Load testing
+
+I added some [loadtests with k6](https://blog.loadimpact.com/load-testing-with-postman-collections) for fun under /loadtests. K6 can be installed on OSX with **brew install k6**.
+
+Tests with 1000 virtual users can be run as follows:
+
+```bash
+k6 run -u 1000 loadtests/k6-kubernetes.js
+k6 run -u 1000 loadtests/k6-cloudrun.js
+```
+
+Performance seems 
 
 ### Troubleshooting
 
@@ -79,3 +91,4 @@ anz-test  dev       etc       proc      sys
 - https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/go
 - https://cloud.google.com/solutions/best-practices-for-building-containers
 - https://medium.com/digio-australia/building-a-robust-ci-pipeline-for-golang-with-google-cloud-build-4b5029617bc9
+- https://blog.loadimpact.com/load-testing-with-postman-collections
