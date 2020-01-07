@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: anz-test
+  labels:
+    app: anz-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: anz-test
+  template:
+    metadata:
+      labels:
+        app: anz-test
+    spec:
+      containers:
+      - name: anz-test
+        image: gcr.io/iranz/anz-test:latest
+        ports:
+        - containerPort: 8080
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: anz-test
+spec:
+  selector:
+    app: anz-test
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+  type: LoadBalancer
