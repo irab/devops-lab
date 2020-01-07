@@ -25,6 +25,6 @@ steps:
   args: [
     'run',
     '--filename=kubernetes',
-    '--location=us-central1',
+    '--location=us-central1-a',
     '--cluster=standard-cluster-1'
   ]
