@@ -24,6 +24,10 @@ This pipeline has no different environments for managing changes safely. But thi
 
 No real failure logic with Cloudbuild, it either fails completely or all steps are successfull. The current couldbuild.yaml can get into a state where the Cloud Run deployment is successful but the GKE fails.
 
+The application can also be deployed from a commit that hasn't got a tag, so the version field is missing.
+
+External third party dependencies expose the pipeline and application to supply chain attacks. Mitigation of this would be to review and build these components from source and deploy them only from a known and audited repository.
+
 ## Local development
 
 ### Building
