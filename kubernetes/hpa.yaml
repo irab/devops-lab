@@ -2,7 +2,7 @@ apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
   name: anz-test-hpa
-  namespace: anz
+  namespace: technical-test
   labels:
     app: anz-test
 spec:

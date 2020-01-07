@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: anz-test-config
-  namespace: anz
+  namespace: technical-test
   labels:
     app: anz-test
 data:
