@@ -22,5 +22,5 @@ steps:
     ]
 images: ['gcr.io/$PROJECT_ID/anz-test']
 substitutions:
-  _LASTCOMMITSHA: $$' $COMMIT_SHA
-  _VERSION: =$TAG_NAME $$ '
+  _LASTCOMMITSHA: $COMMIT_SHA
+  _VERSION: $TAG_NAME 
