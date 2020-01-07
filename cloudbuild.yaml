@@ -4,4 +4,4 @@ steps:
 artifacts:
   objects:
     location: 'gs://anz-test/'
-    paths: ['anz-app']
+    paths: ['anz-test']
