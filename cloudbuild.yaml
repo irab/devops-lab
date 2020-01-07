@@ -9,8 +9,4 @@ steps:
 - id: docker_image_build
   name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--tag=gcr.io/$PROJECT_ID/anz-test', '.']
-images: ['gcr.io/$PROJECT_ID/anz-app']
-# artifacts:
-#   objects:
-#     location: 'gs://anz-test/'
-#     paths: ['anz-test']
+images: ['gcr.io/$PROJECT_ID/anz-test']
