@@ -1,4 +1,4 @@
-FROM scratch
-COPY anz-test /anz-test
+FROM gcr.io/distroless/static
+COPY anz-test /
 EXPOSE 8080
 ENTRYPOINT [ "/anz-test" ]
