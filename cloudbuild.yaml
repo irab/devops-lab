@@ -1,6 +1,6 @@
 steps:
 - name: golang
-  args: ['go', 'build', '-ldflags="-s -w"', '.']
+  args: ['go', 'build', '-ldflags=\"-s -w\"', '.']
 artifacts:
   objects:
     location: 'gs://anz-test/'
