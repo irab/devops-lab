@@ -34,7 +34,7 @@ func Version(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 
 func main() {
 	router := httprouter.New()
-	router.GET("/api/version", Version)
+	router.GET("/version", Version)
 
 	log.Fatal(http.ListenAndServe(":8080", router))
 }
