@@ -53,6 +53,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: anz-test
+  namespace: anz
 spec:
   selector:
     app: anz-test
