@@ -22,6 +22,8 @@ The cloudbuild.yaml file has the following steps:
 
 This pipeline has no different environments for managing changes safely. But this could easily be added by creating Cloud Run services and K8s deployments based on branch names or tag regex.
 
+No real failure logic with Cloudbuild, it either fails completely or all steps are successfull. The current couldbuild.yaml can get into a state where the Cloud Run deployment is successful but the GKE fails.
+
 ## Local development
 
 ### Building
@@ -98,3 +100,4 @@ anz-test  dev       etc       proc      sys
 - https://cloud.google.com/solutions/best-practices-for-building-containers
 - https://medium.com/digio-australia/building-a-robust-ci-pipeline-for-golang-with-google-cloud-build-4b5029617bc9
 - https://blog.loadimpact.com/load-testing-with-postman-collections
+- https://ordina-jworks.github.io/cloud/2019/03/28/Building-With-Google-Cloud-Build.html

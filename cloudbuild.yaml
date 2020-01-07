@@ -13,6 +13,9 @@ steps:
 - id: docker_image_build
   name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--tag=gcr.io/$PROJECT_ID/anz-test', '.']
+- id: docker_image_push
+  name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/$PROJECT_ID/anz-test']
 - id: cloud_run_deploy
   name: 'gcr.io/cloud-builders/gcloud'
   args: [
@@ -31,5 +34,3 @@ steps:
     '--location=us-central1-a',
     '--cluster=standard-cluster-1'
   ]
-images:
-- 'gcr.io/$PROJECT_ID/anz-test'
