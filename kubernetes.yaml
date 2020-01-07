@@ -37,17 +37,17 @@ spec:
         image: gcr.io/ira-nz/anz-test:latest
         ports:
         - containerPort: 8080
-      env:
-        - name: "VERSION"
-          valueFrom:
-            configMapKeyRef:
-              key: "VERSION"
-              name: "anz-test-config"
-        - name: "LASTCOMMITSHA"
-          valueFrom:
-            configMapKeyRef:
-              key: "LASTCOMMITSHA"
-              name: "anz-test-config"
+        env:
+          - name: "VERSION"
+            valueFrom:
+              configMapKeyRef:
+                key: "VERSION"
+                name: "anz-test-config"
+          - name: "LASTCOMMITSHA"
+            valueFrom:
+              configMapKeyRef:
+                key: "LASTCOMMITSHA"
+                name: "anz-test-config"
 ---
 kind: Service
 apiVersion: v1
