@@ -10,8 +10,7 @@ steps:
 - id: docker_image_build
   name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--tag=gcr.io/$PROJECT_ID/anz-test', '.']
+- id: cloud_run_deploy
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['run', 'deploy', 'anz-test', '--image', 'gcr.io/$PROJECT_ID/anz-test', '--region', 'us-central1', '--platform', 'managed', '--allow-unauthenticated']
 images: ['gcr.io/$PROJECT_ID/anz-test']
-artifacts:
-  objects:
-    location: 'gs://anz-test/'
-    paths: ['anz-test']
