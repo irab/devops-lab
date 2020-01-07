@@ -12,17 +12,19 @@ The dynamic variables (**LASTCOMMITSHA**, **VERSION**) in the app are passed to 
 
 The cloudbuild.yaml file has the following steps:
 
-- go_build: Builds a statically linked Go binary with the flags -s and -w to reduce binary size by removing the symbol table and debugging information.
-- go_test: Run 'go test', which currently covers testing that the function returns an expected JSON output.
-- go_security: Runs [gosec](https://github.com/securego/gosec), a code scanner that checks the AST (Abstract Syntax Tree) for security issues
-- docker_image_build: Builds a minimal Docker image using the Dockerfile in the root of the repository (FROM gcr.io/distroless/static)
-- cloud_run_deploy: deploys the image above to Cloud Run in us-central1
+- **go_build**: Builds a statically linked Go binary with the flags -s and -w to reduce binary size by removing the symbol table and debugging information.
+- **go_test**: Run 'go test', which currently covers testing that the function returns an expected JSON output.
+- **go_security**: Runs [gosec](https://github.com/securego/gosec), a code scanner that checks the AST (Abstract Syntax Tree) for security issues
+- **docker_image_build**: Builds a minimal Docker image using the Dockerfile in the root of the repository (FROM gcr.io/distroless/static)
+- **docker_image_push**: pushes the newly built image to the container registry
+- **cloud_run_deploy**: deploys the image to Cloud Run
+- **gke_deploy**: deploys the image to a GKE Cluster
 
 ## Risks and Benefits
 
 This pipeline has no different environments for managing changes safely. But this could easily be added by creating Cloud Run services and K8s deployments based on branch names or tag regex.
 
-No real failure logic with Cloudbuild, it either fails completely or all steps are successfull. The current couldbuild.yaml can get into a state where the Cloud Run deployment is successful but the GKE fails.
+No real failure logic with Cloudbuild, it either fails completely or all steps are successfull. The current couldbuild.yaml can get into a state where the Cloud Run deployment is successful but the GKE fails. There's little logic that can be added to resolve this in a single yaml file. Could be better resolved by splitting out into seperate yaml files.
 
 The application can also be deployed from a commit that hasn't got a tag, so the version field is missing.
 
