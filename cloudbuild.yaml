@@ -24,7 +24,7 @@ steps:
   name: 'gcr.io/cloud-builders/gke-deploy:stable'
   args: [
     'run',
-    '--filename=/kubernetes/',
+    '--filename=kubernetes',
     '--location=us-central1',
     '--cluster=standard-cluster-1'
   ]
