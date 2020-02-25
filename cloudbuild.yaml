@@ -12,15 +12,15 @@ steps:
   env: [GOPATH=.]
 - id: docker_image_build
   name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '--tag=gcr.io/$PROJECT_ID/anz-test', '.']
+  args: ['build', '--tag=gcr.io/$PROJECT_ID/devops-lab', '.']
 - id: docker_image_push
   name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/$PROJECT_ID/anz-test']
+  args: ['push', 'gcr.io/$PROJECT_ID/devops-lab']
 - id: cloud_run_deploy
   name: 'gcr.io/cloud-builders/gcloud'
   args: [
-    'run', 'deploy', 'anz-test',
-    '--image', 'gcr.io/$PROJECT_ID/anz-test',
+    'run', 'deploy', 'devops-lab',
+    '--image', 'gcr.io/$PROJECT_ID/devops-lab',
     '--region', 'us-central1',
     '--platform', 'managed',
     '--allow-unauthenticated',

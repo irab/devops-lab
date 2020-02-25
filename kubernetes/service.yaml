@@ -1,11 +1,11 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: anz-test
+  name: devops-lab
   namespace: technical-test
 spec:
   selector:
-    app: anz-test
+    app: devops-lab
   ports:
   - protocol: TCP
     port: 80

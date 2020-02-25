@@ -11,10 +11,10 @@ postman[Symbol.for("initial")]({
 
 export default function() {
   postman[Request]({
-    name: "anz-test1",
+    name: "devops-lab1",
     id: "015cb1b5-c0da-4c8f-9845-29952dda213b",
     method: "GET",
-    address: "https://anz-test-uzj2cuz3oq-uc.a.run.app/version",
+    address: "https://devops-lab-uzj2cuz3oq-uc.a.run.app/version",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded"
     }

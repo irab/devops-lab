@@ -82,7 +82,7 @@ You can access the docker binary container by attaching it to the a debugging co
 Run the container:
 
 ```bash
-docker run -e VERSION=1.2.3 -e LASTCOMMITSHA=asdas12312 gcr.io/ira-nz/anz-test:latest
+docker run -e VERSION=1.2.3 -e LASTCOMMITSHA=asdas12312 gcr.io/ira-nz/devops-lab:latest
 ```
 
 Attach an alpine container (ideally from another terminal session):
@@ -95,7 +95,7 @@ You should now be able to check the app container filesystem under **/proc/1/roo
 
 ```bash
 ls /proc/1/root/
-anz-test  dev       etc       proc      sys
+devops-lab  dev       etc       proc      sys
 ```
 
 ## Handy References

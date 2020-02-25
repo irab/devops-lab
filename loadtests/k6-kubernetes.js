@@ -11,7 +11,7 @@ postman[Symbol.for("initial")]({
 
 export default function() {
   postman[Request]({
-    name: "anz-test1",
+    name: "devops-lab1",
     id: "015cb1b5-c0da-4c8f-9845-29952dda213b",
     method: "GET",
     address: "http://35.188.34.35/version",

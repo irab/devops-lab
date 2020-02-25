@@ -1,4 +1,4 @@
-module github.com/irab/anz-test
+module github.com/irab/devops-lab
 
 go 1.13
 

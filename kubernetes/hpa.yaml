@@ -1,14 +1,14 @@
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: anz-test-hpa
+  name: devops-lab-hpa
   namespace: technical-test
   labels:
-    app: anz-test
+    app: devops-lab
 spec:
   scaleTargetRef:
     kind: Deployment
-    name: anz-test
+    name: devops-lab
     apiVersion: apps/v1
   minReplicas: 1
   maxReplicas: 5

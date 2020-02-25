@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: anz-test-config
+  name: devops-lab-config
   namespace: technical-test
   labels:
-    app: anz-test
+    app: devops-lab
 data:
   VERSION: 1.2.3
   LASTCOMMITSHA: abc1234abc1234

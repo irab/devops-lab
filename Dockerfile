@@ -1,4 +1,4 @@
 FROM gcr.io/distroless/static
-COPY anz-test /
+COPY devops-lab /
 EXPOSE 8080
-ENTRYPOINT [ "/anz-test" ]
+ENTRYPOINT [ "/devops-lab" ]

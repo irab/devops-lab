@@ -2,23 +2,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: anz-test
-  namespace: anz
+  name: devops-lab
+  namespace: lab
   labels:
-    app: anz-test
+    app: devops-lab
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: anz-test
+      app: devops-lab
   template:
     metadata:
       labels:
-        app: anz-test
+        app: devops-lab
     spec:
       containers:
-      - name: anz-test
-        image: gcr.io/ira-nz/anz-test:latest
+      - name: devops-lab
+        image: gcr.io/ira-nz/devops-lab:latest
         ports:
         - containerPort: 8080
         env:
@@ -26,9 +26,9 @@ spec:
             valueFrom:
               configMapKeyRef:
                 key: "VERSION"
-                name: "anz-test-config"
+                name: "devops-lab-config"
           - name: "LASTCOMMITSHA"
             valueFrom:
               configMapKeyRef:
                 key: "LASTCOMMITSHA"
-                name: "anz-test-config"
+                name: "devops-lab-config"
