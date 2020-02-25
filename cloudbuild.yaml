@@ -26,11 +26,11 @@ steps:
     '--allow-unauthenticated',
     '--set-env-vars=LASTCOMMITSHA=$COMMIT_SHA, VERSION=$TAG_NAME' ## Uses builtin substitutions for version and commit SHA
     ]
-- id: gke_deploy ## Requires modifying IAM permissions https://cloud.google.com/cloud-build/docs/deploying-builds/deploy-gke#required_iam_permissions
-  name: 'gcr.io/cloud-builders/gke-deploy:stable'
-  args: [
-    'run',
-    '--filename=kubernetes',
-    '--location=us-central1-a',
-    '--cluster=standard-cluster-1'
-  ]
+# - id: gke_deploy ## Requires modifying IAM permissions https://cloud.google.com/cloud-build/docs/deploying-builds/deploy-gke#required_iam_permissions
+#   name: 'gcr.io/cloud-builders/gke-deploy:stable'
+#   args: [
+#     'run',
+#     '--filename=kubernetes',
+#     '--location=us-central1-a',
+#     '--cluster=standard-cluster-1'
+#   ]
