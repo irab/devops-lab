@@ -26,7 +26,7 @@ func Version(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	myapp := new(App)
 	myapp.Version = os.Getenv("VERSION")
 	myapp.Lastcommitsha = os.Getenv("LASTCOMMITSHA")
-	myapp.Description = "pre-interview technical test"
+	myapp.Description = "Hello there Telstra"
 
 	p := Data{App: *myapp}
 	json.NewEncoder(w).Encode(p)
