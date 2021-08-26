@@ -26,7 +26,7 @@ func TestGetRequest(t *testing.T) {
 	}
 
 	// Check the response body is what we expect.
-	expected := `{"myapplication":{"version":"1.2.3","lastcommitsha":"8e7b64e943d5872181aaf6496d8c728edccbf696","description":"pre-interview technical test"}}`
+	expected := `{"myapplication":{"version":"1.2.3","lastcommitsha":"8e7b64e943d5872181aaf6496d8c728edccbf696","description":"Hello there Telstra"}}`
 	if strings.TrimRight(rr.Body.String(), "\n") != expected { // strings.TrimRight is needed as JSON Encode adds linebreaks
 		t.Errorf("handler returned unexpected body: \ngot %v \nwant %v",
 			rr.Body.String(), expected)
