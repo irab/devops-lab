@@ -28,7 +28,7 @@ steps:
     --allow-unauthenticated \
     --format=json \
     --set-env-vars=LASTCOMMITSHA=$COMMIT_SHA, VERSION=$TAG_NAME \
-    > workspace/cloudrun_output.json
+    > /workspace/cloudrun_output.json
 - id: test_output ## Uses builtin substitutions for version and commit SHA
   name: alpine
   args: [ 'cat', 'workspace/cloudrun_output.json']
