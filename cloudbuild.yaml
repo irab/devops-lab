@@ -17,9 +17,9 @@ steps:
   args: ['push', 'gcr.io/$PROJECT_ID/devops-lab']
 - id: cloud_run_deploy ## Uses builtin substitutions for version and commit SHA
   name: 'gcr.io/cloud-builders/gcloud'
-  entrypoint: bash
+  entrypoint: /bin/bash
   args: [
-    'gcloud', 'run', 'deploy', 'devops-lab',
+    '-c', 'gcloud', 'run', 'deploy', 'devops-lab',
     '--image', 'gcr.io/$PROJECT_ID/devops-lab',
     '--region', 'us-central1',
     '--platform', 'managed',
