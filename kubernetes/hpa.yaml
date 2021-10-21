@@ -1,0 +1,19 @@
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: devops-lab-hpa
+  namespace: technical-test
+  labels:
+    app: devops-lab
+spec:
+  scaleTargetRef:
+    kind: Deployment
+    name: devops-lab
+    apiVersion: apps/v1
+  minReplicas: 1
+  maxReplicas: 5
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      targetAverageUtilization: 80
