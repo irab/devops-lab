@@ -19,7 +19,7 @@ steps:
   name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: bash
   args: [
-    'run', 'deploy', 'devops-lab',
+    'gcloud', 'run', 'deploy', 'devops-lab',
     '--image', 'gcr.io/$PROJECT_ID/devops-lab',
     '--region', 'us-central1',
     '--platform', 'managed',
