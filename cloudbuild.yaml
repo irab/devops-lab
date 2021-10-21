@@ -15,7 +15,7 @@ steps:
 - id: docker_image_push
   name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/$PROJECT_ID/devops-lab']
-- id: cloud_run_deploy
+- id: cloud_run_deploy ## Uses builtin substitutions for version and commit SHA
   name: 'gcr.io/cloud-builders/gcloud'
   args: [
     'run', 'deploy', 'devops-lab',
@@ -23,8 +23,13 @@ steps:
     '--region', 'us-central1',
     '--platform', 'managed',
     '--allow-unauthenticated',
-    '--set-env-vars=LASTCOMMITSHA=$COMMIT_SHA, VERSION=$TAG_NAME' ## Uses builtin substitutions for version and commit SHA
+    '--format=json', 
+    '--set-env-vars=LASTCOMMITSHA=$COMMIT_SHA, VERSION=$TAG_NAME',
+    '> workspace/cloudrun_output.json'
     ]
+- id: cloud_run_deploy ## Uses builtin substitutions for version and commit SHA
+  name: alpine
+  args: [ 'cat', 'workspace/cloudrun_output.json']
 # - id: gke_deploy ## Requires modifying IAM permissions https://cloud.google.com/cloud-build/docs/deploying-builds/deploy-gke#required_iam_permissions
 #   name: 'gcr.io/cloud-builders/gke-deploy:stable'
 #   args: [
