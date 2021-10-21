@@ -18,16 +18,17 @@ steps:
 - id: cloud_run_deploy ## Uses builtin substitutions for version and commit SHA
   name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: /bin/bash
-  args: [
-    '-c', 'gcloud', 'run', 'deploy', 'devops-lab',
-    '--image', 'gcr.io/$PROJECT_ID/devops-lab',
-    '--region', 'us-central1',
-    '--platform', 'managed',
-    '--allow-unauthenticated',
-    '--format=json', 
-    '--set-env-vars=LASTCOMMITSHA=$COMMIT_SHA, VERSION=$TAG_NAME',
-    '> workspace/cloudrun_output.json'
-    ]
+  args:
+   - '-c'
+   - |
+    gcloud run deploy devops-lab \
+    --image gcr.io/$PROJECT_ID/devops-lab \
+    --region us-central1 \
+    --platform managed \
+    --allow-unauthenticated \
+    --format=json \
+    --set-env-vars=LASTCOMMITSHA=$COMMIT_SHA, VERSION=$TAG_NAME \
+    > workspace/cloudrun_output.json
 - id: test_output ## Uses builtin substitutions for version and commit SHA
   name: alpine
   args: [ 'cat', 'workspace/cloudrun_output.json']
