@@ -28,10 +28,13 @@ steps:
     --allow-unauthenticated \
     --format=json \
     --set-env-vars="LASTCOMMITSHA=$COMMIT_SHA, VERSION=$TAG_NAME" \
-    > /workspace/cloudrun_output.json
+    --format="value(status.address.url)" \
+    > /workspace/cloudrun_address
 - id: test_output ## Uses builtin substitutions for version and commit SHA
   name: alpine
-  args: [ 'cat', '/workspace/cloudrun_output.json']
+  args: 
+   - |
+    cat /workspace/cloudrun_address
 # - id: gke_deploy ## Requires modifying IAM permissions https://cloud.google.com/cloud-build/docs/deploying-builds/deploy-gke#required_iam_permissions
 #   name: 'gcr.io/cloud-builders/gke-deploy:stable'
 #   args: [
