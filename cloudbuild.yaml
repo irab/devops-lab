@@ -29,7 +29,7 @@ steps:
     --format=json \
     --set-env-vars="LASTCOMMITSHA=$COMMIT_SHA, VERSION=$TAG_NAME" \
     --format="value(status.address.url)" \
-    > /workspace/cloudrun_address
+    | tr -d '\n\r' > /workspace/cloudrun_address
 - id: k6_load_testing
   name: loadimpact/k6
   args: ['run', '-u', '10', 'loadtests/k6-cloudrun.js']
