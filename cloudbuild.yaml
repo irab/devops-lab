@@ -32,7 +32,7 @@ steps:
     | tr -d '\n\r' > /workspace/cloudrun_address
 - id: k6_load_testing
   name: loadimpact/k6
-  args: ['run', '-u', '10', 'loadtests/k6-cloudrun.js']
+  args: ['run', '-u', '1000', 'loadtests/k6-cloudrun.js']
 
 # - id: gke_deploy ## Requires modifying IAM permissions https://cloud.google.com/cloud-build/docs/deploying-builds/deploy-gke#required_iam_permissions
 #   name: 'gcr.io/cloud-builders/gke-deploy:stable'
