@@ -2,14 +2,14 @@
 
 import "./libs/shim/core.js";
 
-export let options = { maxRedirects: 2, iterations: "10000" };
+export let options = { maxRedirects: 2, iterations: "100000" };
 
 const Request = Symbol.for("request");
 postman[Symbol.for("initial")]({
   options
 });
 
-let file_path = './cloudrun_address'
+let file_path = '/workspace/cloudrun_address'
 const URL = open(file_path) + "/version"
 
 export default function() {
