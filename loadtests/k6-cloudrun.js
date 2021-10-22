@@ -9,6 +9,9 @@ postman[Symbol.for("initial")]({
   options
 });
 
+let file_path = '/workspace/cloudrun_address'
+const URL = open(file_path)
+
 export default function() {
   postman[Request]({
     name: "devops-lab1",
