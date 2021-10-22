@@ -17,7 +17,7 @@ export default function() {
     name: "devops-lab1",
     id: "015cb1b5-c0da-4c8f-9845-29952dda213b",
     method: "GET",
-    address: "${__ENV.URL}/version",
+    address: "${URL}/version",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded"
     }
