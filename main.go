@@ -11,11 +11,12 @@ import (
 
 // Need to have a nested struct e.g. Data{App{}}, as JSON NewEncoder.Encode returns nothing when calling an unnested struct.
 
-type data struct {
-	App app `json:"myapplication"`
+type Data struct {
+	App App `json:"myapplication"`
 }
 
-type app struct {
+// App fields to pass through the pipeline
+type App struct {
 	Version       string `json:"version"`
 	Lastcommitsha string `json:"lastcommitsha"`
 	Description   string `json:"description"`
@@ -23,12 +24,12 @@ type app struct {
 
 func Version(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	w.Header().Set("Content-Type", "application/json")
-	myapp := new(app)
+	myapp := new(App)
 	myapp.Version = os.Getenv("VERSION")
 	myapp.Lastcommitsha = os.Getenv("LASTCOMMITSHA")
 	myapp.Description = "Hello there"
 
-	p := data{App: *myapp}
+	p := Data{App: *myapp}
 
 	err := json.NewEncoder(w).Encode(p)
 	if err != nil {
