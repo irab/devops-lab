@@ -1,5 +1,5 @@
 # Simple Go API endpoint using HTTProuter
-[![Go Report](https://goreportcard.com/report/github.com/irab/devops-lab)](https://goreportcard.com/report/github.com/irab/devops-lab)
+[![Go Report](https://goreportcard.com/badge/github.com/irab/devops-lab)](https://goreportcard.com/badge/github.com/irab/devops-lab)
 
 This repository contains a Go app that dynamically returns the version of the application and SHA commit hash along with a description.
 
