@@ -3,11 +3,19 @@
 
 This repository contains a Go app that dynamically returns the version of the application and SHA commit hash along with a description.
 
-The app uses [HTTProuter](https://github.com/julienschmidt/httprouter) for API routing, which has [lower latency and better performance](https://github.com/julienschmidt/go-http-routing-benchmark) than supplied by the default http.ServeMux and other HTTP/API router frameworks. This provides an RESTful API that's clearer and more easily extensible than custom code.
+The app uses [HTTProuter](https://github.com/julienschmidt/httprouter) for API routing, which has [lower latency and better performance](https://github.com/julienschmidt/go-http-routing-benchmark) than supplied by the default **http.ServeMux** router and other HTTP/API router frameworks. This provides an RESTful API that's cleaner and more easily extensible than custom code.
 
-The final Docker image is running on Distroless, as building 'FROM Scratch' did not work on Cloud Run. Distroless is Google's [suggested approach](https://github.com/GoogleContainerTools/distroless/blob/master/base/README.md) to running static binaries on Google Cloud and switching to this works.
+The final Docker image is running on Distroless, as building 'FROM Scratch' had some issues on Cloud Run. Distroless is Google's [suggested approach](https://github.com/GoogleContainerTools/distroless/blob/master/base/README.md) to running static binaries on Google Cloud.
+
+
+## Pre-requisites
+
+1. A GCP Project Setup
+1. Installing the [Cloud Build App to Github](https://cloud.google.com/build/docs/automating-builds/build-repos-from-github)
+1. Cloud Build Triggers setup on dev, 
 
 A CI/CD pipeline has been created with a Cloudbuild Github Action integration that triggers for each push to the master branch and also for every tag.
+
 
 The dynamic variables (**LASTCOMMITSHA**, **VERSION**) in the app are passed to the Go app via environment variables. Theses are derived automatically from [Cloudbuild builtin substitutions](https://cloud.google.com/cloud-build/docs/configuring-builds/substitute-variable-values) - **VERSION** from **build.Source.RepoSource.Revision.TagName** and **LASTCOMMITSHA** from **build.SourceProvenance.ResolvedRepoSource.Revision.CommitSha**. This is to avoid hardcoding and ensure changes to these values come via changes to the git repository.
 
