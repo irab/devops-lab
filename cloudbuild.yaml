@@ -25,7 +25,7 @@ steps:
     --image gcr.io/$PROJECT_ID/devops-lab \
     --region us-central1 \
     --platform managed \
-    --concurrency 200 \
+    --concurrency 1000 \
     --allow-unauthenticated \
     --set-env-vars="LASTCOMMITSHA=$COMMIT_SHA, VERSION=$TAG_NAME" \
     --format="value(status.address.url)" \
