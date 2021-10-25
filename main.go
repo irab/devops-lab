@@ -12,7 +12,7 @@ import (
 // Need to have a nested struct e.g. Data{App{}}, as JSON NewEncoder.Encode returns nothing when calling an unnested struct.
 
 type data struct {
-	app app `json:"myapplication"`
+	App app `json:"myapplication"`
 }
 
 type app struct {
@@ -28,7 +28,7 @@ func Version(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	myapp.Lastcommitsha = os.Getenv("LASTCOMMITSHA")
 	myapp.Description = "Hello there"
 
-	p := data{app: *myapp}
+	p := data{App: *myapp}
 
 	err := json.NewEncoder(w).Encode(p)
 	if err != nil {
