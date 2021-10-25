@@ -5,9 +5,8 @@ import "./libs/shim/core.js";
 export let options = {
   maxRedirects: 2,
   stages: [
-    { duration: '1m', target: 2 },
-    { duration: '1m', target: 5 },
-    { duration: '1m', target: 10 },
+    { duration: '30s', target: 5 },
+    { duration: '1m', target: 50 },
     { duration: '1m', target: 200 },
   ],
   thresholds: {
