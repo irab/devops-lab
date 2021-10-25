@@ -5,10 +5,10 @@ import "./libs/shim/core.js";
 export let options = {
   maxRedirects: 2,
   stages: [
+    { duration: '1m', target: 2 },
+    { duration: '1m', target: 5 },
+    { duration: '1m', target: 10 },
     { duration: '1m', target: 200 },
-    { duration: '1m', target: 500 },
-    { duration: '1m', target: 1000 },
-    { duration: '1m', target: 2000 },
   ],
   thresholds: {
     http_req_failed: ['rate<0.02'], // http errors should be less than 2%
