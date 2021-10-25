@@ -10,7 +10,6 @@ import (
 )
 
 // Need to have a nested struct e.g. Data{App{}}, as JSON NewEncoder.Encode returns nothing when calling an unnested struct.
-
 type Data struct {
 	App App `json:"myapplication"`
 }
